@@ -10,6 +10,7 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 maindir = '/Users/maureenkeenan/Desktop/Kaggle/WiDs_Datathon_2020'
 filepath = os.path.join(maindir,'data/external')
@@ -73,7 +74,7 @@ df_out = df.dropna(axis =1, thresh = len(df)*.50 )
 cols_w_na = df_object.columns[df_object.isna().any()].to_list()
 print(cols_w_na)
 
-#%%%% Ethnicty
+#%%%% Ethnicity
 df_object['ethnicity'].value_counts().plot(kind='bar')
 plt.title('Ethnicity Histogram')
 plt.xticks(rotation=45)
@@ -87,7 +88,7 @@ df_out['ethnicity'].isnull().sum()
 
 # Only 25 missing rows
 # Drop rows where gender is missing as its 0 .02% of the data
-df_out = df_out['gender'].dropna(axis=0)
+df_out = df_out.dropna(subset = ['gender'],axis=0)
 
 #%%%% Hospital_admit_source
 
@@ -113,3 +114,67 @@ plt.show()
 # 1.2% of the data is missing. Most admits are from Accident & Emergency. Fill with those
 df_out['icu_admit_source'].fillna('Accident & Emergency',inplace=True)
 df_out['icu_admit_source'].nunique
+
+#%%%% apache_3j and apache_2
+
+#Missing 1.8% of the data.They are empty in the same rows, drop them. 
+df_out = df_out.dropna(subset = ['apache_3j_bodysystem'], axis=0)
+#df_out = df_out['apache_2_bodysystem'].dropna(axis=0)
+
+#%%% Check Categorical
+# Get list of columns to work through
+cols_w_na = df_out.columns[df_out.isna().any()].to_list()
+#print(cols_w_na)
+print(df_out.shape)
+
+#%%% Numerical - int
+
+# Get list of columns to work through
+int_cols_w_na = df_int.columns[df_int.isna().any()].to_list()
+# No missing values
+
+#%%% Numerical - float
+# Get list of columns to work through
+flt_cols_w_na = df_float.columns[df_float.isna().any()].to_list()
+
+review_flt = df_float.describe().T
+
+# Look at percent null
+nas=pd.DataFrame(df_float.isnull().sum().sort_values(ascending=False)/len(df_float),columns = ['percent'])
+pos = nas['percent'] > 0
+print(nas[pos])
+
+#%%%% By Category
+categories = pd.read_csv(os.path.join(filepath,'WiDS Datathon 2020 Dictionary.csv'))
+print(categories['Category'].unique())
+
+identifier = categories[categories['Category']=='identifier']['Variable Name'].tolist()
+demographic = categories[categories['Category']=='demographic']['Variable Name'].tolist()
+Acov = categories[categories['Category']=='APACHE covariate']['Variable Name'].tolist()
+vitals = categories[categories['Category']=='vitals']['Variable Name'].tolist()
+Acom = categories[categories['Category']=='APACHE comorbidity']['Variable Name'].tolist()
+
+#%%%%% Apache Comorbidity
+df_out[Acom].fillna(0,inplace=True)
+df_out[Acom].plot()
+plt.show()
+
+#%%%%% Demographic
+cols_w_na = df_out.columns[df_out.isna().any()].to_list()
+dm_cols = list(set(cols_w_na) & set(demographic))
+
+for i, var in enumerate(dm_cols):
+    try:
+        print(df_out[var].agg(['mean','max','min']).T)
+        plt.figure(i)
+        df_out[var].hist()
+        plt.title(var)
+        plt.show()
+        
+        df_out[var].fillna(df_out[var].mean(),inplace=True)
+    except:
+        'Variable not in df_out'
+        
+
+
+    
