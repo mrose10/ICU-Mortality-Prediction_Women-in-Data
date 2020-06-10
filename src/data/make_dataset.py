@@ -175,6 +175,38 @@ for i, var in enumerate(dm_cols):
     except:
         'Variable not in df_out'
         
+#%%%% Remaining float
+cols_w_na = df_out.columns[df_out.isna().any()].to_list()
+# Look at percent null
+nas=pd.DataFrame(df_out.isnull().sum().sort_values(ascending=False)/len(df_out),columns = ['percent'])
+pos = nas['percent'] > 0
+print(nas[pos])
+#%%%%
+for i, var in enumerate(cols_w_na):
+    try:
+        vnullPcnt = df_out[var].isnull().sum()/len(df_out)*100
+        vmean, vmax, vmin = df_out[var].agg(['mean','max','min']).T
+        plt.figure(i)
+        df_out[var].hist()
+        textstr = '\n'.join((
+            r'$\mean=%.2f$' % (vmean, ),
+            r'$\max=%.2f$' % (vmax, ),
+            r'$\min=%.2f$' % (vmin, ),
+            r'$\null=%.1f$' % (vnullPcnt)))
+        plt.annotate(textstr,xy=(0.95,0.95))
+        plt.title(var)
+        plt.show()
+        
+        df_out[var].fillna(df_out[var].mean(),inplace=True)
+    except:
+        'Variable not in df_out'
 
 
-    
+#%% Correlation
+corr = df_out.corr()
+ax = sns.heatmap(
+    corr, 
+    vmin=-1, vmax=1, center=0,
+    cmap=sns.diverging_palette(20, 220, n=200),
+    square=True
+)
