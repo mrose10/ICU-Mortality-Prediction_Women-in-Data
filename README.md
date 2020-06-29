@@ -1,3 +1,5 @@
+<h3>WiDS (Women in Data Science) Datathon 2020: ICU Mortality Prediction</h3>
+
 **Problem Statement**
 <br/>
 Can intake data from a patient’s first 24 hours  in the Intensive Care Unit (ICU) predict survival? 
