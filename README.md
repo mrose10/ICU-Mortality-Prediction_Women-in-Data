@@ -1,12 +1,16 @@
 # WiDS (Women in Data Science) Datathon 2020: ICU Mortality Prediction</h3>
 
 **Can intake data from a patient’s first 24 hours in the Intensive Care Unit (ICU) predict survival?**
+<br/>
+*The challenge hosted on contains data collected from 130,000 hospital ICU across 6 countries and over 200 hospitals by MIT’s GOSSIS (Global Open Source Severity of Illness Score) community initiative. The APACHE model takes vital/physiological data and recodes on a numerical scale and is used to determine patient care. APACHE models were introduced in 1981 (APACHE I)  and have been updated with APACHE II (1985), APACHE III (1991) and APACHE IV (2006) models. These scores can range from 0 - 71 for APACHE II and o to 299 for APACHE III. 
 
 ## 1. Data
 [Physionet](https://physionet.org/content/widsdatathon2020/1.0.0/) 
-*The challenge hosted on contains data collected from 130,000 hospital ICU across 6 countries and over 200 hospitals by MIT’s GOSSIS (Global Open Source Severity of Illness Score) community initiative. Data includes vitals, demographic information, hospital code and the APACHE score. The APACHE model takes vital/physiological data and recodes on a numerical scale and is used to determine patient care. APACHE models were introduced in 1981 (APACHE I)  and have been updated with APACHE II (1985), APACHE III (1991) and APACHE IV (2006) models. These scores can range from 0 - 71 for APACHE II and o to 299 for APACHE III. 
+<br/>
+Data includes vitals, demographic information, hospital code and the APACHE score. The data consited of 186 features split across different groupings: demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. 
+*Many of the features were empty - which makes sense. This data is aggregated across different issues and only some tests are required for some conditions - e.g. not everyone will need invasive gas measurements. Mu
 
-**Criteria for Success**
+## 2. Method 
 <br/>
 I will use the same metrics as the Datathon competition and evaluate based on the Area Under the Curve/ Receiver Operating Characteristic (AUC ROC) curve. The target variable is mortality, coded in the training data as ‘hospital_death’. The [winning team's](https://www.kaggle.com/c/widsdatathon2020/discussion/133189) AUC score was 91.45, up from an initial commit of 90. 
 
@@ -20,8 +24,7 @@ My approach is to start with 1 - 3 main features and build a logistic regression
 
 **Exploratory Data Analysis**
 <br/>
-* The data consited of 186 features split across different groupings: demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. 
-*Many of the features were empty - which makes sense. This data is aggregated across different issues and only some tests are required for some conditions - e.g. not everyone will need invasive gas measurements. Mu
+
 
 **References**
 <br/>
