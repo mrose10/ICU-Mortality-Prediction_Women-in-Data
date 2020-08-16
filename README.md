@@ -7,7 +7,8 @@
 ## 1. Data
 
 [Physionet](https://physionet.org/content/widsdatathon2020/1.0.0/) 
-<br/>
+
+
 The data consisted of 186 features split across different groupings (shown in the table): demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. Data types included categorical, binary indicators of disease, and lab results (float with  different magnitudes and reanges). 
  
 | Descriptors & Test Results    |    APACHE Info        |   
@@ -29,8 +30,8 @@ The [winning team's](https://www.kaggle.com/c/widsdatathon2020/discussion/133189
 
 ## 3. EDA
 
-* [EDA Notebook] (https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Load%20Data%20and%20EDA%20.ipynb)
-* [Data Cleanup Notebook] (https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Data_Cleanup.ipynb)
+> *[EDA Notebook] (https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Load%20Data%20and%20EDA%20.ipynb)
+[Data Cleanup Notebook] (https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Data_Cleanup.ipynb)
 
 I first looked at the data types and then how much data was available for each patient. Many of the features were empty. This makes sense as data is aggregated across different medical conditions and only some tests are required for some conditions, e.g. not everyone will need invasive gas measurements, and across different times (indicated with 'h1: hour 1' and 'd1: within 24 hours'). 
 
