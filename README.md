@@ -5,7 +5,7 @@
 *The challenge hosted on contains data collected from 130,000 hospital ICU across 6 countries and over 200 hospitals by MIT’s GOSSIS (Global Open Source Severity of Illness Score) community initiative. The APACHE model takes vital/physiological data and recodes on a numerical scale and is used to determine patient care. APACHE models were introduced in 1981 (APACHE I)  and have been updated with APACHE II (1985), APACHE III (1991) and APACHE IV (2006) models. These scores can range from 0 - 71 for APACHE II and o to 299 for APACHE III.* 
 
 ## 1. Data
-<br/>
+
 [Physionet](https://physionet.org/content/widsdatathon2020/1.0.0/) 
 <br/>
 The data consisted of 186 features split across different groupings (shown in the table): demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. Data types included categorical, binary indicators of disease, and lab results (float with  different magnitudes and reanges). 
@@ -18,7 +18,7 @@ The data consisted of 186 features split across different groupings (shown in th
 | labs & labs blood gas | APACHE grouping      |
 
 ## 2. Method 
-<br/>
+
 The metric of the competition is the Area Under the Curve/ Receiver Operating Characteristic (AUC ROC) curve. The target variable is mortality, coded in the training data as ‘hospital_death’. As this is a classification task, I will test 3 classifier methods:
 
 * Logistic Regression - the simplest approach to get a feel for the feature importances
@@ -28,11 +28,14 @@ The metric of the competition is the Area Under the Curve/ Receiver Operating Ch
 The [winning team's](https://www.kaggle.com/c/widsdatathon2020/discussion/133189) AUC score was 91.45, up from an initial commit of 90. 
 
 ## 3. EDA
-<br/>
+
+* [EDA Notebook] (https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Load%20Data%20and%20EDA%20.ipynb)
+* [Data Cleanup Notebook] (https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Data_Cleanup.ipynb)
+
 I first looked at the data types and then how much data was available for each patient. Many of the features were empty. This makes sense as data is aggregated across different medical conditions and only some tests are required for some conditions, e.g. not everyone will need invasive gas measurements, and across different times (indicated with 'h1: hour 1' and 'd1: within 24 hours'). 
 
 ## 4. Feature Engineering and Selection
-<br/>
+
 Many features were highly correlated or even had the same value across different features, like max and min across different times. I
 
 ## 5. Model Results
