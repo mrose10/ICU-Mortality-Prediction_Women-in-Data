@@ -5,15 +5,16 @@
 Can intake data from a patient’s first 24 hours  in the Intensive Care Unit (ICU) predict survival? 
 How do ethnicity and gender factor into survival? 
 
+
 **Context**
 <br/>
-Data was collected from 130,000 hospital ICU across 6 countries and over 200 hospitals by MIT’s GOSSIS (Global Open Source Severity of Illness Score) community initiative. Data includes vitals, demographic information, hospital code and the APACHE score. 
+The challenge hosted on [Physionet](https://physionet.org/content/widsdatathon2020/1.0.0/) contains data collected from 130,000 hospital ICU across 6 countries and over 200 hospitals by MIT’s GOSSIS (Global Open Source Severity of Illness Score) community initiative. Data includes vitals, demographic information, hospital code and the APACHE score.
 
 The APACHE model takes vital/physiological data and recodes on a numerical scale and is used to determine patient care. APACHE models were introduced in 1981 (APACHE I)  and have been updated with APACHE II (1985), APACHE III (1991) and APACHE IV (2006) models. These scores can range from 0 - 71 for APACHE II and o to 299 for APACHE III. 
 
 **Criteria for Success**
 <br/>
-I will use the same metrics as the Datathon competition and evaluate based on the Area Under the Curve/ Receiver Operating Characteristic (AUC ROC) curve. The target variable is mortality, coded in the training data as ‘hospital_death’. 
+I will use the same metrics as the Datathon competition and evaluate based on the Area Under the Curve/ Receiver Operating Characteristic (AUC ROC) curve. The target variable is mortality, coded in the training data as ‘hospital_death’. The [winning team's](https://www.kaggle.com/c/widsdatathon2020/discussion/133189) AUC score was 91.45, up from an initial commit of 90. 
 
 **Scope of solution space**
 <br/>
