@@ -44,8 +44,7 @@ I first looked at the data types and then how much data was available for each p
 
 * Many features were highly correlated or even had the same value across different features, like max and min across different times. Features included in the model were collapsed from 'var_h1_min/max' and 'var_d1_min/max' into one variable. 
 > * Features were created that indicated whether an invasive test was performed or not, and the labs otherwise collapsed into one variable.
-> * Features were created that indicated whether a patient had any h1 measurement. 
-> * Vitals correlated with hospital_death were: mbp_invasive
+> * A feature was created that indicated whether a patient had any h1 measurement. 
 
 * Not all vitals were included in the intial modeling. Temperature, lactate, bilirubin kept, additional features such as partial oxygen (spo2), systolic and mean blood pressure (sysbp and mbp) should be processed and included to improve fitting. 
 
