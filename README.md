@@ -7,13 +7,10 @@
 ## 1. Data
 [Physionet](https://physionet.org/content/widsdatathon2020/1.0.0/) 
 <br/>
-Data includes vitals, demographic information, hospital code and the APACHE score. The data consited of 186 features split across different groupings: demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. Many of the features were empty - which makes sense. This data is aggregated across different issues and only some tests are required for some conditions - e.g. not everyone will need invasive gas measurements. 
-
-['identifier' 'demographic' 'APACHE covariate' 'vitals' 'labs'
- 'labs blood gas' 'APACHE prediction' 'APACHE comorbidity'
- 'APACHE grouping' 'GOSSIS example prediction']
-
-| :----:                |    :----:            |   
+The data consisted of 186 features split across different groupings (shown in the table): demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. Data types included categorical, binary indicators, and floating lab results.  Many of the features were empty - which makes sense. This data is aggregated across different issues and only some tests are required for some conditions - e.g. not everyone will need invasive gas measurements. 
+ 
+| Descriptors & Test Results    |    APACHE Info        |   
+| :----:                        |    :----:            |   
 | Identifier            | APACHE covariate     |
 | Demographic           | APACHE prediction    |
 | vitals                | APACHE comorbidity   |
