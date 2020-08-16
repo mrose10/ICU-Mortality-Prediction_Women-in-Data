@@ -26,8 +26,6 @@ The metric of the competition is the Area Under the Curve/ Receiver Operating Ch
 * Random Forest - flexible for the different types of data and ensemble voting
 * Boosted Trees - boost classification of more difficult samples
 
-The [winning team's](https://www.kaggle.com/c/widsdatathon2020/discussion/133189) AUC score was 91.45, up from an initial commit of 90. 
-
 ## 3. EDA
 
 [EDA Notebook](https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Load%20Data%20and%20EDA%20.ipynb)
@@ -40,6 +38,8 @@ I first looked at the data types and then how much data was available for each p
 
 [Data Cleanup Notebook](https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Data_Cleanup.ipynb)
 
+[Preprocessing Notebook](https://github.com/mrose10/WiDs_Datathon_2020/blob/master/notebooks/Preprocessing.ipynb)
+
 * Demographic, categorical and apache features were kept for initial testing. 
 
 * Many features were highly correlated or even had the same value across different features, like max and min across different times. Features included in the model were collapsed from 'var_h1_min/max' and 'var_d1_min/max' into one variable. 
@@ -48,18 +48,21 @@ I first looked at the data types and then how much data was available for each p
 
 * Not all vitals were included in the intial modeling. Temperature, lactate, bilirubin kept, additional features such as partial oxygen (spo2), systolic and mean blood pressure (sysbp and mbp) should be processed and included to improve fitting. 
 
-* Albumin and creatinine (indicators of kidney function) were transformed in a similar way into the feature ACR and subsequently removed. 
+* Albumin and creatinine (indicators of kidney function) were transformed, their ratio turned into the feature ACR and subsequently removed. 
 
 ![highly correlated vitals](https://github.com/mrose10/WiDs_Datathon_2020/blob/master/reports/figures/Screenshot%20Vitals%20Correlation.png)
 
-
-
-
 ## 5. Model Results
+
+[Modeling Notebook](http://localhost:8888/notebooks/notebooks/Modeling.ipynb)
 
 ## 6. Model Analysis
 
+
+
+
 ## 7. Next Steps
+[Winning Solution on Kaggle](https://www.kaggle.com/c/widsdatathon2020/discussion/133189) AUC score was 91.45, up from an initial commit of 90. 
 
  
 
