@@ -1,5 +1,5 @@
 # ICU Mortality Prediction
-## Women in Data (WiD) 2020 Datathon</h3>
+<h3/>Women in Data (WiD) 2020 Datathon</h3>
 
 **Can intake data from a patient’s first 24 hours in the Intensive Care Unit (ICU) predict survival?**
 <br/>
@@ -57,9 +57,25 @@ I first looked at the data types and then how much data was available for each p
 
 [Modeling Notebook](http://localhost:8888/notebooks/notebooks/Modeling.ipynb)
 
+The model with the best balance of speed and performance is the Random Forest, but not by much. The scores of all models, and from their out-of-the-box implementation to tuning was very close in the 0.79 - 0.84 AUC range. 
+
+![Model Comparison](https://github.com/mrose10/WiDs_Datathon_2020/blob/master/reports/figures/Screenshot%20Model%20ROC%20Comparison%20Scores.png)
+
+I then looked top 5 features from each model, shown below.  Lactate was by far the most important variable, although the measurement was present only in 10 - 15% of the samples in the test set.  The appearance of ACR, an engineered feature, suggets the importance of working with a medical doctor to better understand the relationship between the lab tests and vitals. 
+
+| Logistic Regression         |    Random Forest     |  Gradient Boost   |
+| :----:                      |    :----:            |   :----:          |
+| lactate                     | lactate                |lactate       |
+| age                         | apache_3j_diagnosis    |apache_3j_diagnosis        |
+| apache_3j_bodysystem_Sepsis | ACR                    |ACR       |
+| icu_admit_source_Floor      | h1_temp_min            |h1_temp_min        |
+| icu_type_MICU               | bmi                    |age       |
+
 ## 6. Model Analysis
 
+Before jumping into additional feature engineering, I examined how the Random Forest model performed on the train and test data. I varied the number of samples in the training set and plotted the mean error on the train and test set. 
 
+![Model Error](https://github.com/mrose10/WiDs_Datathon_2020/blob/master/reports/figures/Screenshot%20Train%20Test%20Error.png)
 
 
 ## 7. Next Steps
