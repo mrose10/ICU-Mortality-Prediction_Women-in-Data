@@ -6,31 +6,32 @@
 
 ## 1. Data
 [Physionet](https://physionet.org/content/widsdatathon2020/1.0.0/) 
-
 <br/>
-Data includes vitals, demographic information, hospital code and the APACHE score. The data consited of 186 features split across different groupings: demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. 
-*Many of the features were empty - which makes sense. This data is aggregated across different issues and only some tests are required for some conditions - e.g. not everyone will need invasive gas measurements. Mu
+Data includes vitals, demographic information, hospital code and the APACHE score. The data consited of 186 features split across different groupings: demographics (age, ethnicity, hostpital id), vitals (temperature, heart rate), lab tests (lactate, blood gas), apache scores and body systems. Many of the features were empty - which makes sense. This data is aggregated across different issues and only some tests are required for some conditions - e.g. not everyone will need invasive gas measurements. 
+
+['identifier' 'demographic' 'APACHE covariate' 'vitals' 'labs'
+ 'labs blood gas' 'APACHE prediction' 'APACHE comorbidity'
+ 'APACHE grouping' 'GOSSIS example prediction']
+
+| :----:                |    :----:            |   
+| Identifier            | APACHE covariate     |
+| Demographic           | APACHE prediction    |
+| vitals                | APACHE comorbidity   |
+| labs & labs blood gas | APACHE grouping      |
 
 ## 2. Method 
 <br/>
 The metric of the competition is the Area Under the Curve/ Receiver Operating Characteristic (AUC ROC) curve. The target variable is mortality, coded in the training data as ‘hospital_death’. As this is a classification task, I will test 3 classifier methods:
 
-> * Logistic Regression
-> * Random Forest
-> * Boosted Trees
-
-
+> * Logistic Regression - the simplest approach to get a feel for the feature importances
+> * Random Forest - flexible for the different types of data and ensemble voting
+> * Boosted Trees - boost classification of more difficult samples
 
 The [winning team's](https://www.kaggle.com/c/widsdatathon2020/discussion/133189) AUC score was 91.45, up from an initial commit of 90. 
 
-**Scope of solution space**
+## 3. EDA
 <br/>
 My approach is to start with 1 - 3 main features and build a logistic regression model. I will add features as needed to improve the fit.  Other solutions would be to examine  the use of decision trees. My constraints are working with data that is reported from certain hospitals, and missing demographic and funding data of the hospitals themselves. Some factors could be standardized according to ICU equipment and staff availability and percentage of population served. 
-
-
-
-**Exploratory Data Analysis**
-<br/>
 
 
 **References**
